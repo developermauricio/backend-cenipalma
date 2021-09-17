@@ -40,3 +40,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::get('certificado', [App\Http\Controllers\Certificado\CertificadoController::class, 'index']);
+Route::get('download_certificado', [App\Http\Controllers\Certificado\CertificadoController::class, 'download']);

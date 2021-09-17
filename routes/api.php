@@ -48,3 +48,6 @@ Route::get('/register-var', [ClicksInformationController::class, 'registerVariab
 Route::get('/update-var', [ClicksInformationController::class, 'updateVariable']);
 Route::get('/get-var', [ClicksInformationController::class, 'getVariable']);
 
+Route::post('/test', function (Request $request) {
+    return $request->all();
+});
