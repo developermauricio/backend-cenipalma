@@ -36,6 +36,7 @@
               >
                 Descargar archivo
               </a>
+              <button @click="reset" class="btn btn-secondary">Volver</button>
             </template>
             <template v-if="!hasCertificado">
               <h2>No se encontro el certificado</h2>
@@ -43,6 +44,7 @@
                 El certificado no se encuentra en nuestro sistema, si tienes
                 alguna duda puedes consultar a soporte
               </p>
+              <button @click="reset" class="btn btn-secondary">Volver</button>
             </template>
             <p></p>
           </div>
@@ -56,8 +58,6 @@ export default {
   data() {
     return {
       email: "",
-      href: null,
-      array: [],
       user: null,
       loading: false,
     };
@@ -83,11 +83,11 @@ export default {
           this.$nprogress.done();
         });
     },
-  },
-  mounted() {
-    for (let i = 0; i < 200; i++) {
-      this.array.push(i);
-    }
+    reset() {
+      this.email = "";
+      this.user = null;
+      this.loading = false;
+    },
   },
   computed: {
     downloadFile() {
