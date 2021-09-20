@@ -25,7 +25,6 @@ class ClicksInformationController extends Controller
 
         $this->registerpointsDB($request, $currentUser);
 
-        //if ( $this->registerSceneVisitDB( $currentUser, $request->nameScene ) ) {
         if ( $this->registerSceneVisitDB( $currentUser, $request->go_scene ) ) {
             return response()->json(['status' => 'ok', 'msg' => 'registro agredado correctamente.']);
         } else {
@@ -84,7 +83,7 @@ class ClicksInformationController extends Controller
             return response()->json(['status' => 'fail', 'msg' => 'registro fallido el usuario no está registrado.']);         
         } 
 
-        $this->registerpointsDB($request, $currentUser);
+        $this->registerPointsDB($request, $currentUser);
 
         if ( $this->registerEventclickDB( $currentUser, $request ) ) {
             return response()->json(['status' => 'ok', 'msg' => 'registro agredado correctamente.']);
@@ -138,7 +137,7 @@ class ClicksInformationController extends Controller
         }
     }
 
-    public function registerpointsDB( $request, $currentUser ) {
+    public function registerPointsDB( $request, $currentUser ) {
         if ( $request->points == 0 ) return false;
 
         $listPoints = Point::where('email', $currentUser->email)->get();
