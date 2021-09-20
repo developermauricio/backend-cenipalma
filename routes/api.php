@@ -3,6 +3,7 @@
 use App\Http\Controllers\Certificado\CertificadoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PointsController;
 use App\Http\Controllers\UserInformationController;
 use App\Http\Controllers\ClicksInformationController;
 
@@ -42,11 +43,21 @@ Route::post('/register-model', [ClicksInformationController::class, 'registerWal
 
 Route::get('/get-list-scenes', [ClicksInformationController::class, 'getScenesVisit']);
 Route::get('/get-event-clicks', [ClicksInformationController::class, 'getEventClicks']);
-Route::get('/get-points', [ClicksInformationController::class, 'getPoints']);
-
+Route::get('/get-poster-gallery', [ClicksInformationController::class, 'getPosterGallery']); 
 
 Route::get('/register-var', [ClicksInformationController::class, 'registerVariable']);
 Route::get('/update-var', [ClicksInformationController::class, 'updateVariable']);
 Route::get('/get-var', [ClicksInformationController::class, 'getVariable']);
 
+
+/***  Managen points  ***/
+Route::get('/get-points', [PointsController::class, 'getPoints']);
+Route::get('/get-total-points-user/{email}', [PointsController::class, 'getTotalPointsUser']);
+Route::get('/get-points-user/{email}', [PointsController::class, 'getPointsUser']);
+Route::get('/get-ranking-points', [PointsController::class, 'getRankingPointsUsers']); 
+Route::post('/register-points-image-ranking', [ClicksInformationController::class, 'registerPointsImageRanking']);
+
+
 Route::post('/check_certificate', [CertificadoController::class, 'checkCertificado']);
+
+
