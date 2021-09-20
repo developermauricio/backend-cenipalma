@@ -7,6 +7,7 @@ use App\Console\Commands\LoggedUsers;
 use App\Console\Commands\ScenesVisited;
 use App\Console\Commands\ClickEvents;
 use App\Console\Commands\Points;
+use App\Console\Commands\SyncPosterGallery;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -23,6 +24,7 @@ class Kernel extends ConsoleKernel
         ScenesVisited::class,
         ClickEvents::class,
         Points::class,
+        SyncPosterGallery::class,
     ];
 
     /**
@@ -39,6 +41,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('sync:scenesvisited')->everyMinute()->withoutOverlapping();
         $schedule->command('sync:clickevents')->everyMinute()->withoutOverlapping();
         $schedule->command('sync:points')->everyMinute()->withoutOverlapping();
+        $schedule->command('sync:postergallery')->everyMinute()->withoutOverlapping();
     }
 
     /**
