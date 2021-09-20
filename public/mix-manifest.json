@@ -1,3 +1,7 @@
 {
-    "/js/stars.js": "/js/stars.js"
+    "/js/app.js": "/js/app.js",
+    "/js/certificado.js": "/js/certificado.js",
+    "/js/stars.js": "/js/stars.js",
+    "/css/bootstrap.css": "/css/bootstrap.css",
+    "/css/app.css": "/css/app.css"
 }

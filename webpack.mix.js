@@ -15,5 +15,6 @@ mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/certificado.js', 'public/js')
     .js('resources/js/stars.js', 'public/js')
     .vue()
-    .sass('resources/sass/app.scss', 'public/css');
+    .sass('resources/sass/app.scss', 'public/css')
+    .sass('resources/sass/bootstrap.scss', 'public/css');
 // mix.js('resources/js/stars.js', 'public/js');

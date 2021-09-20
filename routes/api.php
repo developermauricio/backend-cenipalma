@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Certificado\CertificadoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserInformationController;
@@ -48,6 +49,4 @@ Route::get('/register-var', [ClicksInformationController::class, 'registerVariab
 Route::get('/update-var', [ClicksInformationController::class, 'updateVariable']);
 Route::get('/get-var', [ClicksInformationController::class, 'getVariable']);
 
-Route::post('/test', function (Request $request) {
-    return $request->all();
-});
+Route::post('/check_certificate', [CertificadoController::class, 'checkCertificado']);
