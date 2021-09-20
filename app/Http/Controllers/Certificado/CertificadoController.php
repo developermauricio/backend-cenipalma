@@ -50,7 +50,7 @@ class CertificadoController extends Controller
             ->where('id', $request->input('key'))
             ->first();
         if ($user && $user->certificado) {
-            return Storage::download($user->certificado, "certificado");
+            return Storage::download($user->certificado, "certificado.pdf");
             // $fullName = $user->fullname;
             // return $this->generateCertificate($fullName)->download('Certificado', false);
         } else if ($user) {
