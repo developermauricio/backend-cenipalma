@@ -45,7 +45,7 @@ class CertificadoController extends Controller
 
     public function download(Request $request)
     {
-        $user = User::select('certificado')
+        $user = User::select('certificado', 'fullName')
             ->where('email', $request->input('email'))
             ->where('id', $request->input('key'))
             ->first();
@@ -54,7 +54,7 @@ class CertificadoController extends Controller
             // $fullName = $user->fullname;
             // return $this->generateCertificate($fullName)->download('Certificado', false);
         } else if ($user) {
-            // return $this->generateCertificate($fullName)->download('Certificado', false);
+            return $this->generateCertificate($user->fullName)->download('Certificado', false);
         }
         return response()->json([
             "msg" => "Certificado no encontrado"
@@ -63,16 +63,19 @@ class CertificadoController extends Controller
 
     private function generateCertificate($fullName)
     {
-        $pathCertificado = Storage::path('certificado/uno.png');
+        // $pathCertificado = Storage::path('certificado/certificado.png');
+        // $pathCertificado = Storage::path('certificado/A0-png-500w.png');
+        $pathCertificado = Storage::path('certificado/A0-png.png');
 
         $image = new ImgController();
         $image->openImagePng($pathCertificado);
 
-        //texto
         $size = 30;
+
+        //texto
         $angle = 0;
-        $x = 280;
-        $y = 400;
+        $x = ($image->getParams()[2] / 2) - (($size / 2) * ceil(strlen($fullName) / 1.5));
+        $y = 430;
         $pathFont = Storage::path('fonts/Roboto/Roboto-Bold.ttf');
         $color = $image->getColor(0, 0, 0);
 

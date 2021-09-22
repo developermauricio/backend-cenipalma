@@ -61,4 +61,9 @@ class ImgController
     {
         return imagecolorallocate($this->imagen, $R, $G, $B);
     }
+
+    public function getParams()
+    {
+        return imagegetclip($this->imagen);
+    }
 }

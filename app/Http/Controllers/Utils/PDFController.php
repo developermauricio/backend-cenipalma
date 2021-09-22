@@ -17,7 +17,7 @@ class PDFController
 
     private function config()
     {
-        $this->dompdf->setPaper('A4', 'landscape');
+        $this->dompdf->setPaper('letter', 'landscape');
     }
 
     public function open(string $html)
