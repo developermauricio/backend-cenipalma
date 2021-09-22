@@ -19,11 +19,9 @@ class PointsController extends Controller
     public function getTotalPointsUser( $email ){
         $user = User::whereEmail($email)->first();
         $points = 0;
-        Log::debug($user); 
 
         if ( $user ) {
-            $points = Point::where('email', $user->email)
-                ->sum('points');
+            $points = Point::where('email', $user->email)->sum('points');
         }
 
         return response()->json(['data' => $points]);

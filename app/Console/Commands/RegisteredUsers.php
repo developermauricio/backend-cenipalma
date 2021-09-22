@@ -45,14 +45,12 @@ class RegisteredUsers extends Command
         $variable = Variable::query()
             ->where('name', 'lastRegisteredUsersIDSync')
             ->first();
-        Log::debug($variable); 
         
         $rows = User::query()
             ->where('id', '>', $variable->value)
             ->orderBy('id')
             ->limit(100)
             ->get();        
-        Log::debug($rows); 
 
         if( $rows->count() === 0 ){
             return  true;
@@ -77,8 +75,7 @@ class RegisteredUsers extends Command
             ]);
 
             $lastId = $row->id;
-        }
-        Log::debug($finalData);         
+        }        
 
         $googleSheet->saveDataToSheet(
             $finalData->toArray(),

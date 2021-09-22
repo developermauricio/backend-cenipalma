@@ -156,6 +156,7 @@ class ClicksInformationController extends Controller
     } 
 
     public function registerQualificationImage($request, $currentUser) {
+        if ($request->qualification == 0) return false;
 
         $listImages = PosterGallery::where('email', $currentUser->email)->get();
 
