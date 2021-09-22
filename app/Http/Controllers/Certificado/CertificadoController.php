@@ -54,7 +54,7 @@ class CertificadoController extends Controller
             // $fullName = $user->fullname;
             // return $this->generateCertificate($fullName)->download('Certificado', false);
         } else if ($user) {
-            return $this->generateCertificate($user->fullName)->download('Certificado', false);
+            // return $this->generateCertificate($user->fullName)->download('Certificado', false);
         }
         return response()->json([
             "msg" => "Certificado no encontrado"
