@@ -156,18 +156,16 @@ class ClicksInformationController extends Controller
     } 
 
     public function registerQualificationImage($request, $currentUser) {
+        Log::debug($request);
         if ($request->qualification == 0) return false;
 
-        $listImages = PosterGallery::where('email', $currentUser->email)->get();
+        $listPosters = PosterGallery::where('email', $currentUser->email)->get();
 
-        if ( $listImages ) {
-            $dateNow = Carbon::now('America/Bogota');
+        if ( $listPosters ) {
             $existRegister = false;
 
-            foreach ( $listImages as $image ) {
-                $dateRegister = new Carbon($image->created_at, 'America/Bogota');
-
-                if ( $dateNow->dayOfYear == $dateRegister->dayOfYear && $request->nameImage == $image->poster_name ) {
+            foreach ( $listPosters as $poster ) {
+                if ( $request->namePDF == $poster->poster_name ) {
                     $existRegister = true;
                     break;
                 }
@@ -185,7 +183,8 @@ class ClicksInformationController extends Controller
            $newPoster->email = $currentUser->email;
            $newPoster->fullname = $currentUser->fullname;         
            $newPoster->username = $currentUser->username;         
-           $newPoster->poster_name = $request->nameImage; 
+           $newPoster->poster_name = $request->namePDF; 
+           //$newPoster->poster_url = $request->urlPDF; 
            $newPoster->qualification = $request->qualification; 
            $newPoster->date_visit = Carbon::now('America/Bogota');
            $newPoster->save();
