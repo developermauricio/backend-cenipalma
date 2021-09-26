@@ -19,7 +19,7 @@ class CreatePosterGalleriesTable extends Migration
             $table->string('fullname')->nullable();
             $table->string('username')->nullable();
             $table->string('poster_name')->nullable();
-            //$table->string('poster_url')->nullable();
+            $table->string('poster_url')->nullable();
             $table->bigInteger('qualification')->nullable();
             $table->timestamp('date_visit')->nullable();
             $table->timestamps();

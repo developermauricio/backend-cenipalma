@@ -184,7 +184,7 @@ class ClicksInformationController extends Controller
            $newPoster->fullname = $currentUser->fullname;         
            $newPoster->username = $currentUser->username;         
            $newPoster->poster_name = $request->namePDF; 
-           //$newPoster->poster_url = $request->urlPDF; 
+           $newPoster->poster_url = $request->urlPDF; 
            $newPoster->qualification = $request->qualification; 
            $newPoster->date_visit = Carbon::now('America/Bogota');
            $newPoster->save();
