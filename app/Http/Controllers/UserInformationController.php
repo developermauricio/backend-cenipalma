@@ -11,8 +11,7 @@ use Illuminate\Support\Facades\Log;
 
 class UserInformationController extends Controller
 {
-   public function registerOrLoginUser( Request $request ) {
-      
+   public function registerOrLoginUser( Request $request ) {      
       $currentUser = User::whereEmail( $request->email )->first();
 
       if ( $currentUser ) {
